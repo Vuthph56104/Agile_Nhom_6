@@ -1,0 +1,29 @@
+function taoDanhSachNgauNhien(soLuong) {
+    let ds = [];
+    for (let i = 0; i < soLuong; i++) {
+        let item = {
+            id: i + 1,
+            value: Math.floor(Math.random() * 9000) + 1000,
+            name: Math.random().toString(36).substring(2, 8),
+            active: Math.random() > 0.5
+        };
+        ds.push(item);
+    }
+    return ds;
+}
+
+function timGiaTriCaoNhat(ds) {
+    let max = ds[0];
+    for (let i = 1; i < ds.length; i++) {
+        if (ds[i].value > max.value) {
+            max = ds[i];
+        }
+    }
+    return max;
+}
+
+const danhSach = taoDanhSachNgauNhien(10);
+const lonNhat = timGiaTriCaoNhat(danhSach);
+
+console.log(danhSach);
+console.log("Item lớn nhất:", lonNhat);
